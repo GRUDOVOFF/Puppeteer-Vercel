@@ -25,9 +25,9 @@ app.get("/api", async (req, res) => {
 
     try {
         let browser = await puppeteer.launch(options);
-        await captureWebsite.file('https://grudov.ru', 'screenshot.png');
         let page = await browser.newPage();
         await page.goto("https://grudov.ru");
+        await captureWebsite.file('https://grudov.ru', 'screenshot.png');
         res.send(await page.title());
     } catch (err) {
         console.error(err);
